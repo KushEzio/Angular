@@ -1,0 +1,19 @@
+<p>cart-list works!</p>
+
+<h3>Cart-list</h3>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+    </tr>
+
+    <tr *ngFor="let cartItem of cartItems">
+        <td>{{cartItem.name}}</td>
+        <td>{{cartItem.price}}</td>
+        <td>{{cartItem.qty}}</td>
+        <td>{{cartItem.price * cartItem.qty}}</td>
+
+    </tr>
+</table>

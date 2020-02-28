@@ -1,0 +1,57 @@
+<h2>Counter</h2>
+
+<!-- 
+  (I)  {{expression}} : interpolation, evaluate the expression
+        1. convert result to string type
+        2. Don't use to pass data
+
+   (II) [property-name]="expr" : Property binding
+        property="fixedValue"
+
+    (III) 
+        (eventName)="expr" - event binding
+
+(IV)
+    $event is fixed/hardcoded argument
+
+(V)
+Two-way binding[property+eventbinding]
+    [(property)]="counter"// it should be statement to assign a value
+
+
+
+ -->
+<p>Counter {{counter}}</p>
+<p>Counter + 1 ={{counter+1}}</p>
+
+<div>
+    <span>
+        Counter
+    </span>
+    <input [value]="counter +2">
+</div>
+
+<div>
+    <span>Two way binding</span>
+    <!-- one way to do this -->
+    <input [(ngModel)]="counter" type="number">
+    <!-- another way -->
+    <div>
+        <span>Anothe way of doing two way binding</span>
+        <input type="number" [ngModel]="counter" (ngModelChange)="counter=$event">
+    </div>
+    
+</div>
+
+
+<button [disabled]="counter % 2==0">
+    {{counter%2==0? "Disabled" : "Enabled"}}
+</button>
+<!-- 
+    $event is fixed/hardcoded argument
+ -->
+<button (click)="increment($event)">
+    +1
+</button>
+
+<button (click)="counter= counter-1">-1</button>
