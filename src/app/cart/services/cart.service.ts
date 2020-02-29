@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../models/cart-item';
+// import { Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
-@Injectable({
+@Injectable(
+  {
   providedIn: 'root'
-})
+}
+)
 export class CartService {
 
   private _cartItems: CartItem[] = [];
 
   private _amount = 0; //total amount
   private _count = 0; //total items in cart
+
+  // public amount$: Subject<number>= new Subject();
+  // public count$: Subject<number>=new Subject();
+  public amount$: BehaviorSubject<number>= new BehaviorSubject(this._amount);
+  public count$: BehaviorSubject<number>=new BehaviorSubject(this._count);
 
   get cartItems() {
     return this._cartItems;
@@ -25,6 +34,8 @@ export class CartService {
 
   set count(value: number) {
     this._count = value;
+    console.log("count is ", value);
+    this.count$.next(this._count);
   }
 
   get amount() {
@@ -33,6 +44,9 @@ export class CartService {
 
   set amount(value: number) {
     this._amount = value;
+    console.log("amount is ", value);
+    // publish the values to subscriber
+    this.amount$.next(this._amount);
   }
 
   constructor() {
@@ -57,10 +71,11 @@ export class CartService {
     this._cartItems.push(cartItem);
     this.calculate();
   }
-
+  
   removeItem(id: number) {
-    const index = this._cartItems.findIndex(item => item.id == id)
-    this._cartItems.splice(index, 1);
+    // const index = this._cartItems.findIndex(item => item.id == id)
+    // this._cartItems.splice(index, 1);
+    this._cartItems.splice(id,1);
     this.calculate();
   }
 

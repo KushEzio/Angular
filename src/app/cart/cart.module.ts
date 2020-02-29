@@ -4,9 +4,14 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { CartService } from './services/cart.service';
+import { Route, RouterModule } from "@angular/router";
 
-
-
+const routes: Route[] = [
+  {
+    path: 'cart',
+    component: CartComponent
+  }
+]
 @NgModule({
   declarations: [
     CartComponent,
@@ -15,7 +20,8 @@ import { CartService } from './services/cart.service';
 
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ],
   exports: [
     CartComponent

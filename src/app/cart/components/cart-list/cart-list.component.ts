@@ -13,10 +13,26 @@ export class CartListComponent implements OnInit {
 
   constructor(private cartService: CartService) {
     console.log("Cartlist component created");
-    this.cartItems= this.cartService.cartItems;
-   }
+    this.cartItems = this.cartService.cartItems;
+  }
 
   ngOnInit() {
   }
+
+  // Remove item using index
+  removeItem(i: number){
+    // this.cartItems.splice(i,1);
+    this.cartService.removeItem(i);
+  }
+
+  // without using index
+  // removeItem(itemname: string) {
+  //   for (let index = 0; index < this.cartItems.length; index++) {
+  //     if (this.cartItems[index].name == itemname) {
+  //       this.cartItems.splice(index, 1);
+  //     }
+
+  //   }
+  // }
 
 }

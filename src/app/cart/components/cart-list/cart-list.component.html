@@ -1,7 +1,12 @@
 <p>cart-list works!</p>
 
+<!-- 
+    # - Template reference variable
+ -->
 <h3>Cart-list</h3>
-<table>
+<table *ngIf="cartItems.length>0; else emptyTable">
+    <!-- both above and below with or without semicolon after if it would work -->
+    <!-- <table *ngIf="cartItems.length>0 else emptyTable"> -->
     <tr>
         <th>Name</th>
         <th>Price</th>
@@ -9,11 +14,24 @@
         <th>Total</th>
     </tr>
 
-    <tr *ngFor="let cartItem of cartItems">
-        <td>{{cartItem.name}}</td>
-        <td>{{cartItem.price}}</td>
+    <tr *ngFor="let cartItem of cartItems; let i = index">
+        <td>{{cartItem.name | uppercase }}</td>
+        <td>{{cartItem.price | currency:'INR'}}</td>
         <td>{{cartItem.qty}}</td>
-        <td>{{cartItem.price * cartItem.qty}}</td>
-
+        <td>{{cartItem.price * cartItem.qty | currency:'INR'}}</td>
+        
+            <!-- Remove using index -->
+            <td><button (click)="removeItem(i)">Remove</button></td>
+        
+         <!-- <td><button (click)="removeItem(cartItem.name)">Remove</button></td> -->
+        
+<!-- 
+    ToDO : removeItem by id
+    place a button
+    (click)="removeItem(cartItem.id)"
+ -->
     </tr>
 </table>
+<ng-template #emptyTable>
+<span>No items in shopping cart</span>
+</ng-template>

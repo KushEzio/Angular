@@ -15,6 +15,41 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from "@angular/forms";
 import { CartModule } from './cart/cart.module';
+import { RouterModule, Route } from "@angular/router";
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductRoutingModule } from "./product/product-routing-module";
+// pathlocation stategy is default
+import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from "@angular/common";
+
+// 1. configuration 
+const routes: Route[] = [
+    // map the path to the component
+    {
+        path: '',
+        component: HomeComponent
+    },
+    {
+        path: 'home',
+        component: HomeComponent
+    },
+    {
+        path: 'about',
+        component: AboutComponent
+    },
+    {
+        path: 'contact',
+        component: ContactComponent
+    },
+    {
+        path: "counter",
+        component: CounterComponent
+    },
+    // at last
+    {
+        path: "**",
+        component: NotFoundComponent
+    }
+]
 
 @NgModule({
     // meta data about module
@@ -22,7 +57,11 @@ import { CartModule } from './cart/cart.module';
         BrowserModule,
         SharedModule,
         FormsModule,
-        CartModule
+        CartModule,
+        ProductRoutingModule,
+        // 2. Apply the configuration
+        // root/app/main module
+        RouterModule.forRoot(routes)
     ],
     declarations: [
         //components, pipes, directives
@@ -32,8 +71,15 @@ import { CartModule } from './cart/cart.module';
         ContactComponent,
         CounterComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        NotFoundComponent
     ],
+    // providers: [
+    //     {
+    //         provide: LocationStrategy,
+    //         useClass: HashLocationStrategy
+    //     }
+    // ],
     bootstrap: [
         AppComponent
     ]

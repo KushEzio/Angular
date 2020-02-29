@@ -1,1 +1,10 @@
-<p>footer works!</p>
+<hr/>
+
+<p>Copyrights 2020</p>
+<p>Todays date is {{today | date}}</p>
+<p>Todays date is {{today | date:"fullDate"}}</p>
+<!-- chainning of pipes -->
+<p>Todays date is {{today | date:"fullDate" | lowercase}}</p>
+<!-- custom one -->
+<p>Todays date is {{today | date:"dd/MM/yy"}}</p>
+

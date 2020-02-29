@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class LikeComponent implements OnInit {
 
+  isMouseOver= false;
+
   // [(likes)]="homePageLikes"
   // [(likes)]="productPagesLikes"
 
