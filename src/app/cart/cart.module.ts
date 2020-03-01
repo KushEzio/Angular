@@ -5,6 +5,7 @@ import { CartListComponent } from './components/cart-list/cart-list.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { CartService } from './services/cart.service';
 import { Route, RouterModule } from "@angular/router";
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Route[] = [
   {
@@ -21,7 +22,8 @@ const routes: Route[] = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
   exports: [
     CartComponent

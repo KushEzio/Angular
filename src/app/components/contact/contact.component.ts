@@ -8,14 +8,18 @@ import { Address } from 'src/app/shared/models/address';
 })
 export class ContactComponent implements OnInit {
 
-  headOffice: Address={
-    city:"BLR",
-    state:"KA",
+  // mainOffice: Address = undefined; //null
+  mainOffice: Address = null; //null
+
+
+  headOffice: Address = {
+    city: "BLR",
+    state: "KA",
     pincode: 560001
   }
-  branchOffice: Address={
-    city:"Noida",
-    state:"UP",
+  branchOffice: Address = {
+    city: "Noida",
+    state: "UP",
     pincode: 201301
   }
 
@@ -24,9 +28,9 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
-  contactHandler(address:Address){
+  contactHandler(address: Address) {
     console.log("address to contact", address);
-    
+
   }
 
 }

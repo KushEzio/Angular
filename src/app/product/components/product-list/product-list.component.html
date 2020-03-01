@@ -1,1 +1,43 @@
-<p>product-list works!</p>
+<h2>product-list Example! {{(products$ | async)?.length}}</h2>
+
+<!-- try to apply some filters -->
+<select name="fieldName" [(ngModel)]="fieldName" id="">
+    <option value="price">Price</option>
+    <option value="year">Year</option>
+</select>
+<select name="operator" [(ngModel)]="operator" id="">
+    <option value=">">&gt;</option>
+    <option value="<">&lt;</option>
+    <option value="==">==</option>
+
+</select>
+<input type="number" [(ngModel)]="expectedValue" name="expectedValue" />
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Year</th>
+        <th>+Cart</th>
+    </tr>
+
+    <!-- async call for subscribe using pipe async -->
+    <tr *ngFor="let product of (products$ | async| filter: fieldName:operator:expectedValue| sort:'price') ">
+        <td>
+            <!-- for tracking we use "{source:'list'}" it is optional and you can give any name that you wanted -->
+            <a [routerLink]="['/products', 'edit', product.id, {source:'list'}]">
+
+                {{product.name}}
+
+            </a>
+        </td>
+        <td>{{product.price}}</td>
+        <td>{{product.year}}</td>
+
+        <td>
+            <button (click)="addToCart(product)">+Cart</button>
+            <button (click)="deleteProduct(product.id)">Delete X</button>
+        </td>
+    </tr>
+
+</table>

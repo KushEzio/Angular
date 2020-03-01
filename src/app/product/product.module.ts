@@ -5,6 +5,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +14,9 @@ import { RouterModule } from '@angular/router';
   declarations: [ProductHomeComponent, ProductListComponent, ProductEditComponent, ProductSearchComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule,
+    FormsModule
   ]
 })
 export class ProductModule { }

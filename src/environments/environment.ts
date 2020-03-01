@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // use to make api slow between 2-8 seconds approximately
+  // apiEndPoint: "http://localhost:7070/delayed",
+  apiEndPoint: "http://localhost:7070",
+  authEndPoint: "http://localhost:7070/oauth/token",
+  buildName: 'Dev'
 };
 
 /*

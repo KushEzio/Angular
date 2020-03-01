@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  
+// @ViewChild('footHighlight',{static:true}):
+
+  // <app-footer appCompany="Sapient"
+  @Input("company")// alias name for property binding
+  appCompany:string;
 
   today: Date= new Date();
   constructor() { }

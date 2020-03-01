@@ -14,7 +14,9 @@
         <th>Total</th>
     </tr>
 
-    <tr *ngFor="let cartItem of cartItems; let i = index">
+    <!-- <tr *ngFor="let cartItem of cartItems ; let i = index"> -->
+    <tr *ngFor="let cartItem of (cartItems|sort:'price' ); let i = index">
+
         <td>{{cartItem.name | uppercase }}</td>
         <td>{{cartItem.price | currency:'INR'}}</td>
         <td>{{cartItem.qty}}</td>

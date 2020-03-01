@@ -5,6 +5,7 @@ import { ProductListComponent } from "./components/product-list/product-list.com
 import { ProductEditComponent } from "./components/product-edit/product-edit.component";
 import { ProductSearchComponent } from "./components/product-search/product-search.component";
 import { ProductModule } from "./product.module";
+import { CanEditGuard } from './guards/can-edit.guard';
 
 
 const routes: Route[]=[
@@ -22,7 +23,8 @@ const routes: Route[]=[
             },
             {
                 path: 'edit/:id',
-                component: ProductEditComponent
+                component: ProductEditComponent,
+                canActivate:[CanEditGuard]  //array of services, all the guard should return true
             },
             {
                 path: 'search',
@@ -45,5 +47,7 @@ const routes: Route[]=[
 })
 
 export class ProductRoutingModule{
+
+    
 
 }

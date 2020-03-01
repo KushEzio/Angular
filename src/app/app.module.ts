@@ -20,6 +20,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductRoutingModule } from "./product/product-routing-module";
 // pathlocation stategy is default
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from "@angular/common";
+import {  HttpClientModule } from '@angular/common/http';
 
 // 1. configuration 
 const routes: Route[] = [
@@ -55,6 +56,7 @@ const routes: Route[] = [
     // meta data about module
     imports: [
         BrowserModule,
+        HttpClientModule,
         SharedModule,
         FormsModule,
         CartModule,
@@ -62,6 +64,7 @@ const routes: Route[] = [
         // 2. Apply the configuration
         // root/app/main module
         RouterModule.forRoot(routes)
+        
     ],
     declarations: [
         //components, pipes, directives
